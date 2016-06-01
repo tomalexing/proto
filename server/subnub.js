@@ -1,4 +1,5 @@
-export default function (){
+
+export default function (data){
 
 var pubnub = require("pubnub")({
     ssl           : false,  // <- enable TLS Tunneling over TCP
@@ -10,11 +11,12 @@ var pubnub = require("pubnub")({
 
 // get data
 var channel = "c3-spline";
-var data = require('./ECG.json');
+var data = data || [];
 var i = 0,
-    length = data['ECG'].length,
-    data1 = data['ECG'].concat(), //new ref
+    length = data.length,
+    data1 = data.concat(), //new ref
     datamatr = [];
+
 function getTen(){
     var size = 10;
     for (var j=0; j<data1.length; j+=size) {
