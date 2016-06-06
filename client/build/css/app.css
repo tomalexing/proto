@@ -1,3 +1,69 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5,
+h6, p, blockquote, pre, a, abbr, acronym, address, big,
+cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small,
+strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt,
+dd, ol, ul, li, fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+img, fieldset, a img {
+  border: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  -webkit-appearance: none;
+}
+
+input[type="submit"],
+button {
+  cursor: pointer;
+}
+
+input[type="submit"]::-moz-focus-inner,
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+input, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+div, input, textarea, select, button,
+h1, h2, h3, h4, h5, h6, a, span, a:focus {
+  outline: none;
+}
+
+ul, ol {
+  list-style-type: none;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
 /*-- Chart --*/
 .c3 svg {
   font: 10px sans-serif;
@@ -197,6 +263,108 @@
 .c3-chart-arc .c3-gauge-value {
   fill: #000;
   /*  font-size: 28px !important;*/
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: whitesmoke;
+  font: normal 16px/1.4 Arial;
+  font-size: 1.6rem;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2, h1 {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.wrapper__3dgraph {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  overflow: hidden;
+}
+
+.wrapper__3dgraph .btn {
+  display: block;
+  text-align: center;
+  width: 50%;
+  height: 20px;
+  border: 2px solid darkslategrey;
+  border-radius: 2px;
+  background: #3f3f3f;
+  color: white;
+  cursor: pointer;
+  padding: 1px 5px;
+  margin: 0 0 20px;
+  transition: all 0.3s ease;
+}
+
+.wrapper__3dgraph .btn:hover {
+  background: #558f8f;
+}
+
+.wrapper__3dgraph .btn.btn__active {
+  background: #eeeeee;
+  color: black;
+  border: 2px solid wheat;
+}
+
+.wrapper__3dgraph .btn.btn__active:hover {
+  background: #bbbbbb;
+}
+
+.wrapper__3dgraph .cover__desc {
+  display: block;
+  width: 35%;
+  float: left;
+  text-align: start;
+  font-size: 12px;
+}
+
+.wrapper__3dgraph .num_period,
+.wrapper__3dgraph [name="num_period"] {
+  display: block;
+  width: auto;
+  float: right;
+}
+
+.wrapper__3dgraph .controls__3dgraph {
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  padding: 15px;
+  width: 180px;
+  border: 1px solid #e26e0f;
+  border-radius: 5px;
+  background: lavender;
+}
+
+.wrapper__3dgraph .controls__3dgraph .cover__control {
+  *zoom: 1;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.wrapper__3dgraph .controls__3dgraph .cover__control:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.wrapper__3dgraph .controls__3dgraph .btn {
+  width: 50%;
+  float: right;
+}
+
+.wrapper__3dgraph .three-d-graph {
+  float: left;
 }
 
 /*# sourceMappingURL=app.css.map */

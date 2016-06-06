@@ -7,3 +7,68 @@ body
   font-size: 1.6rem
   color: black
   +smooth-font
+
+h2,h1
+  text-align: center
+  padding: 0 10px
+.wrapper__3dgraph
+  position: relative
+  width: 80%
+  margin: 0 auto
+  height: auto
+
+  overflow: hidden
+  .btn
+    display: block
+    text-align: center
+    width: 50%
+    height: 20px
+    border: 2px solid darkslategrey
+    border-radius: 2px
+    background: #3f3f3f
+    color: white
+    cursor: pointer
+    padding: 1px 5px
+    margin: 0 0 20px
+    +trans(all, .3s)
+    &:hover
+      background: lighten(darkslategrey, 20%)
+    &.btn__active
+      background: #eeeeee
+      color: black
+      border: 2px solid wheat
+      &:hover
+        background: darken(#eeeeee, 20%)
+  .cover__desc
+
+    display: block
+    width: 35%
+    float: left
+    text-align: start
+    font-size: 12px
+
+  .num_period,
+  [name="num_period"]
+    display: block
+    width: auto
+    float: right
+
+  .controls__3dgraph
+    position: absolute
+    top: 80px
+    right: 0px
+    padding: 15px
+    width: 180px
+    border: 1px solid #e26e0f
+    border-radius: 5px
+    background: lavender
+    .cover__control
+      +clr
+      text-align: center
+      margin: 10px 0
+    .btn
+      width: 50%
+      float: right
+
+  .three-d-graph
+    float: left

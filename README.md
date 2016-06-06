@@ -54,3 +54,4 @@ You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
 * `npm run ghpages` to push only `./build` folder to **gh-pages** branch on github (very useful for previews).
 * `npm run start` - same as `gulp default`.
 * `npm run build` - same as `gulp build`.
+* `npm run startserver` - start server.
