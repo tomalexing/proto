@@ -34,11 +34,13 @@ export default function (data,peaks) {
     getPackage();
     }
     function getTen() {
+        var size = 50;
         for (var j = 0; j < data1.length; j += size) {
             var temp = data1.slice(j, j + size);
             datamatr.push(temp);
         }
     }
+    //getTen();
     /* ---------------------------------------------------------------------------
      Publish Messages
      --------------------------------------------------------------------------- */
@@ -81,6 +83,9 @@ export default function (data,peaks) {
                 }
             }
         });
+        //console.log("data -- %s\n", data1[i]);
+        setTimeout(funcForPlotly, 1000, ++i % datamatr.length);
     }
 
+    setTimeout(funcForPlotly, 1000, i);
 }
