@@ -19,8 +19,8 @@ var plotlyPubNub = PUBNUB.init({
 //==============================================
 //############INIT PUBNUB END###################
 //==============================================
-
-console.log(eon);
+//
+//console.log(eon);
 
 eon.chart({
     channel: channel2,
@@ -50,6 +50,7 @@ plotlyPubNub.subscribe({
     history: true,
     message: function(m){
         godograph.add(m.plotly);
+        console.log(m);
     }
 
 });

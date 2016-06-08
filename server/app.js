@@ -3,16 +3,17 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     pubnub = require("pubnub"),
-    fs = require("fs"),
+    Fs = require("fs"),
     csv = require("fast-csv"),
-    stream = fs.createReadStream("server/samples.csv"),
+    stream = Fs.createReadStream("server/samples.csv"),
     output = [],
+    output2 = [],
     Frank  = [],
     newdata = [],
     heartBeat = 60,
     fs = 1000,
     intermidiateFs = 1000,
-    koef = Math.floor(fs / intermidiateFs),
+    koef = 5,
     buffer = [];
 
 var csvStream = csv()
@@ -23,25 +24,26 @@ var csvStream = csv()
             if(item == "'vz'") Frank[2] =  ind;
         });
         newdata = data.filter(function(item, ind){ return  !isNaN(item) && Frank.indexOf(ind) != -1 });
-        if( newdata[0] != undefined ) output.push(newdata);
+        if( newdata[0] != undefined ) output2.push(newdata);
+        if( newdata[0] != undefined && buffer.length <= koef) buffer.push(newdata);
 
-        //if( buffer.length > koef ) {
-        //    let sum = [0,0,0];
-        //    buffer.map( (item, ind) => {
-        //        sum[0] = sum[0] + (+item[0]);
-        //        sum[1] = sum[1] + (+item[1]);
-        //        sum[2] = sum[2] + (+item[2]);
-        //    });
-        //    output.push(Frank.map( (item, ind) => { return ~~(sum[ind] / buffer.length) }));
-        //    buffer = [];
-        //}
+        if( buffer.length > koef ) {
+            let sum = [0,0,0];
+            buffer.map( (item, ind) => {
+                sum[0] = sum[0] + (+item[0]);
+                sum[1] = sum[1] + (+item[1]);
+                sum[2] = sum[2] + (+item[2]);
+            });
+            output.push(Frank.map( (item, ind) => { return ~~(sum[ind] / buffer.length) }));
+            buffer = [];
+        }
     })
     .on("end", function(){
 
         new Promise((resolve) => require("./baseLine").default(output, 4, 'mn', resolve)).
             then((res1) => {
-                new Promise((resolve1) => require("./peakDetection").default(res1, 1/intermidiateFs, resolve1)).
-                    then((res2) =>  require("./subnub").default(res1, res2));
+                new Promise((resolve1) => require("./peakDetection").default(res1, koef/intermidiateFs, resolve1)).
+                    then((res2) =>  require("./subnub").default(res1, res2, output));
                 });
 
        // const peaks = require("./peakDetection").default(baseLine, 1/intermidiateFs);
